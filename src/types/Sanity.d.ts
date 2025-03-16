@@ -38,11 +38,7 @@ declare global {
 			metadata: Metadata
 			readonly language?: string
 		}
-        interface Image extends SanityAssetDocument {
-			alt: string
-			loading: 'lazy' | 'eager'
-		}
-        interface Img {
+    interface Img {
 			readonly _type: 'img'
 			image: Image
 			responsive?: {
@@ -53,10 +49,15 @@ declare global {
 			loading?: 'lazy' | 'eager'
 		}
 
+		interface Image extends SanityAssetDocument {
+			alt: string
+			loading: 'lazy' | 'eager'
+		}
+
     interface Artist {
       name: string
       slug: string
-      image: profileImage
+      profileImage: Image
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       bio: any
     }
@@ -86,11 +87,16 @@ declare global {
             content: any; // Replace `any` with the correct type if using block content
             artist?: Artist;
             lyricImage: Image;
-            user?: {
-              _id: string;
-              name: string;
-            };
+            user?: User;
             album?: Album;
         } 
+        interface Metadata {
+          slug: { current: string }
+          title: string
+          description: string
+          image?: Image
+          ogimage?: string
+          noIndex: boolean
+        }
     }
 }

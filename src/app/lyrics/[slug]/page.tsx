@@ -31,19 +31,23 @@ export async function generateStaticParams() {
 	return slugs.map((slug) => ({ slug: slug }))
 }
 
-export async function getLyric(params: Params) {
+async function getLyric(params: Params) {
   const { slug } = processSlug(params)
   const response = await fetchSanityLive<Sanity.Lyric>({
     query: groq`
       *[_type == "lyric" && slug.current == $slug][0]{
         _id,
         title,
+        titleAm,
         "slug": slug.current,
         metadata,
+        lyricImage,
         content,
         "artist": artist->{
           _id,
-          name
+          name,
+          profileImage,
+          bio
         },
         "user": user->{
           _id,
@@ -51,7 +55,8 @@ export async function getLyric(params: Params) {
         },
         "album": album->{
           _id,
-          title
+          title,
+          coverImage
         },
         language,
         seo{
