@@ -1,9 +1,9 @@
-import { fetchSanityLive } from "@/sanity/lib/fetch";
 import { groq } from "next-sanity";
 // import { client } from "@/sanity/lib/client";
 import { notFound } from "next/navigation";
 import processMetadata from "@/lib/processMetadata";
 import LyricsPage from "@/components/pages/lyrics/LyricsPage";
+import { client } from "@/sanity/lib/client";
 
 type Params = { slug: string }
 
@@ -32,8 +32,7 @@ export async function generateMetadata({ params }: Props) {
 
 async function getLyric(params: Params) {
   const { slug } = processSlug(params)
-  const response = await fetchSanityLive<Sanity.Lyric>({
-    query: groq`
+  const response = await client.fetch<Sanity.Lyric>(groq`
       *[_type == "lyric" && slug.current == $slug][0]{
         _id,
         title,
@@ -68,8 +67,8 @@ async function getLyric(params: Params) {
         }
       }
     `,
-    params: { slug },
-  });
+   { slug },
+  );
   return response || null;
 }
 
