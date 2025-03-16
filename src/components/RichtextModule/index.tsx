@@ -1,4 +1,3 @@
-import moduleProps from '@/lib/moduleProps'
 import TableOfContents from './TableOfContents'
 import Content from './Content'
 import { cn } from '@/lib/utils'
@@ -10,8 +9,8 @@ export default function RichtextModule({
 	tocPosition = 'right',
 	stretch,
 	headings,
-	...props
 }: Partial<{
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	content: any
 	tableOfContents: boolean
 	tocPosition: 'left' | 'right'
@@ -20,8 +19,7 @@ export default function RichtextModule({
 		style: string
 		text: string
 	}[]
-}> &
-	Sanity.Module) {
+}>) {
 	const tocRight = stegaClean(tocPosition) === 'right'
 
 	return (
@@ -31,7 +29,6 @@ export default function RichtextModule({
 				tableOfContents &&
 					(tocRight ? 'lg:grid-cols-[1fr_auto]' : 'lg:grid-cols-[auto_1fr]'),
 			)}
-			{...moduleProps(props)}
 		>
 			{tableOfContents && (
 				<aside

@@ -51,24 +51,45 @@ declare global {
 			alt?: string
 			loading?: 'lazy' | 'eager'
 		}
+
+    interface Artist {
+      name: string
+      slug: string
+      image: profileImage
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      bio: any
+    }
+
+    interface Album extends PageBase {
+      title: string
+      slug: string
+      coverImage: Image
+      artist: Artist
+      releaseYear: number
+       // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      description: any
+      genere: 'Rock', 'Pop', 'Hip-Hop', 'Electronic', 'Country', 'Jazz'
+    }
+    interface User {
+      name: string
+      slug: string
+      image: Image
+    }
+
         interface Lyric extends PageBase {
             _id: string;
             title: string;
+            titleAm: string;
             slug: string;
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             content: any; // Replace `any` with the correct type if using block content
-            artist?: {
-              _id: string;
-              name: string;
-            };
+            artist?: Artist;
+            lyricImage: Image;
             user?: {
               _id: string;
               name: string;
             };
-            album?: {
-              _id: string;
-              title: string;
-            };
+            album?: Album;
         } 
     }
 }

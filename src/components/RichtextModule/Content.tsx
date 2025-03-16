@@ -2,7 +2,6 @@ import { PortableText } from 'next-sanity'
 import { cn } from '@/lib/utils'
 
 import Image from './Image'
-import Admonition from './Admonition'
 import AnchoredHeading from './AnchoredHeading'
 
 export default function Content({
@@ -30,11 +29,9 @@ export default function Content({
 					},
 					types: {
 						image: Image,
-						admonition: Admonition,
 					},
 				}}
 			/>
-
 			{children}
 		</div>
 	)

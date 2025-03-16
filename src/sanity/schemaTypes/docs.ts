@@ -25,7 +25,6 @@ export const blockContent = defineType({
         name: 'username',
         title: 'Username',
         type: 'string',
-       
       }),
       defineField({
         name: 'profileImage',
@@ -92,22 +91,11 @@ export const blockContent = defineType({
         type: 'blockContent',
       }),
       defineField({
-        name: 'seo',
-        title: 'SEO Settings',
-        type: 'object',
-        fields: [
-          defineField({
-            name: 'title',
-            title: 'SEO Title',
-            type: 'string',
-          }),
-          defineField({
-            name: 'description',
-            title: 'SEO Description',
-            type: 'text',
-          }),
-        ],
+        name: 'metadata',
+        title: 'Metadata',
+        type: 'metadata',
       }),
+      
     ],
   });
   
@@ -165,23 +153,7 @@ export const blockContent = defineType({
           list: ['Rock', 'Pop', 'Hip-Hop', 'Electronic', 'Country', 'Jazz'],
         },
       }),
-      defineField({
-        name: 'seo',
-        title: 'SEO Settings',
-        type: 'object',
-        fields: [
-          defineField({
-            name: 'title',
-            title: 'SEO Title',
-            type: 'string',
-          }),
-          defineField({
-            name: 'description',
-            title: 'SEO Description',
-            type: 'text',
-          }),
-        ],
-      }),
+      
       defineField({
         name: 'metadata',
         title: 'Metadata',
@@ -205,6 +177,24 @@ export const blockContent = defineType({
         name: 'title',
         title: 'Title',
         type: 'string',
+      }),
+      defineField({
+        name: 'titleAm',
+        title: 'Title (Amharic)',
+        type: 'string',
+      }),
+      defineField({
+        name: 'lyricImage',
+        title: 'Lyric Image',
+        type: 'image',
+        options: { hotspot: true },
+        fields: [
+          defineField({
+            name: 'alt',
+            title: 'Alt Text',
+            type: 'string',
+          }),
+        ],
       }),
       defineField({
         name: 'slug',
@@ -248,23 +238,7 @@ export const blockContent = defineType({
           list: ['et', 'en', 'es', 'fr', 'de', 'it'],
         },
       }),
-      defineField({
-        name: 'seo',
-        title: 'SEO Settings',
-        type: 'object',
-        fields: [
-          defineField({
-            name: 'title',
-            title: 'SEO Title',
-            type: 'string',
-          }),
-          defineField({
-            name: 'description',
-            title: 'SEO Description',
-            type: 'text',
-          }),
-        ],
-      }),
+      
       defineField({
         name: 'songLinks',
         title: 'Song Links',
