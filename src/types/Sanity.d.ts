@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import type { SanityImageObject } from '@sanity/image-url/lib/types/types'
 import type { SanityAssetDocument, SanityDocument } from 'next-sanity'
 
