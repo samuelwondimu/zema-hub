@@ -1,6 +1,6 @@
 import { fetchSanityLive } from "@/sanity/lib/fetch";
 import { groq } from "next-sanity";
-import { client } from "@/sanity/lib/client";
+// import { client } from "@/sanity/lib/client";
 import { notFound } from "next/navigation";
 import processMetadata from "@/lib/processMetadata";
 import LyricsPage from "@/components/pages/lyrics/LyricsPage";
@@ -23,13 +23,12 @@ export async function generateMetadata({ params }: Props) {
 	return processMetadata(post)
 }
 
-export async function generateStaticParams() {
-	const slugs = await client.fetch<string[]>(
-		groq`*[_type == 'lyric' && defined(metadata.slug.current)].metadata.slug.current`,
-	)
-  console.log("slugs", slugs)
-	return slugs.map((slug) => ({ slug: slug }))
-}
+// export async function generateStaticParams() {
+// 	const slugs = await client.fetch<string[]>(
+// 		groq`*[_type == 'lyric' && defined(metadata.slug.current)].metadata.slug.current`,
+// 	)
+// 	return slugs.map((slug) => ({ slug: slug }))
+// }
 
 async function getLyric(params: Params) {
   const { slug } = processSlug(params)
