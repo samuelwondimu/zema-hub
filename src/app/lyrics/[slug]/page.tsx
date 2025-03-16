@@ -1,7 +1,7 @@
 import { groq } from "next-sanity";
 // import { client } from "@/sanity/lib/client";
 import { notFound } from "next/navigation";
-import processMetadata from "@/lib/processMetadata";
+// import processMetadata from "@/lib/processMetadata";
 import LyricsPage from "@/components/pages/lyrics/LyricsPage";
 import { client } from "@/sanity/lib/client";
 
@@ -17,11 +17,11 @@ export default async function Page({ params }: Props) {
   return <LyricsPage lyric={lyric}/>;
 }
 
-export async function generateMetadata({ params }: Props) {
-	const post = await getLyric(await params)
-	if (!post) notFound()
-	return processMetadata(post)
-}
+// export async function generateMetadata({ params }: Props) {
+// 	const post = await getLyric(await params)
+// 	if (!post) notFound()
+// 	return processMetadata(post)
+// }
 
 // export async function generateStaticParams() {
 // 	const slugs = await client.fetch<string[]>(
